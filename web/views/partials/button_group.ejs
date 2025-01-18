@@ -1,0 +1,8 @@
+<% block.item.button_group.buttons.forEach(button => { %>
+    <a href="<%= button.url %>"  class="btn btn-main-md <%= button.variant %>">
+        <% if(button.label.toLowerCase() === 'github'){ %>
+            <i class="ti-github"></i>
+        <% } %>
+        <%= button.label %>
+    </a>
+<% }) %>

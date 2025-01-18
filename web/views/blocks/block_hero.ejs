@@ -1,6 +1,7 @@
 <!--====================================
 =            Hero Section            =
 =====================================-->
+
 <section class="section gradient-banner">
 	<div class="shapes-container">
 		<div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
@@ -27,9 +28,17 @@
 					<%= block.item.headline %>
 				</h1>
 				<p class="text-white mb-5">	<%= block.item.description %></p>
-				<a href="https://github.com/yohita/directcms" target="_blank" class="btn btn-main-md">
-					<i class="ti-github"></i> Github</a>
+				<!-- <a href="https://github.com/yohita/directcms" target="_blank" class="btn btn-main-md">
+					<i class="ti-github"></i> Github</a> -->
 				 
+					<!-- loop button_groups-->
+					 <% if(block.item.button_group){%>
+
+						<%- include('../partials/button_group',{block}) %>
+						
+					<% }%>	
+
+
 			</div>
 			<div class="col-md-6 text-center order-1 order-md-2">
 				<img class="img-fluid" src="/web_assets/images/hero_default.jpg" alt="hero default">
@@ -38,3 +47,27 @@
 	</div>
 </section>
 <!--====  End of Hero Section  ====-->
+
+<section class="section pt-0 position-relative pull-top">
+	<div class="container">
+		<div class="rounded shadow p-5 bg-white">
+			<div class="row">
+			
+				<div class="row">
+					<% if(block.item.feature_group){%>
+					  <% block.item.feature_group.features.forEach(feature => { %>  
+							<div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
+								<a href="<%=feature.url%>" target="_parent">	<i class="ti-<%=feature.icon%> text-primary h1"></i>
+								<h3 class="mt-4 text-capitalize h5 "> <%=feature.title%> </h3>
+								<p class="regular text-muted">
+									<%=feature.description%>
+								</p>
+								</a>
+							</div> 
+					  <% }) %> 
+					<% } %>
+						</div>
+			</div>
+		</div>
+	</div>
+</section>
