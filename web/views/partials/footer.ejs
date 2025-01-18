@@ -1,0 +1,63 @@
+<footer>
+    <div class="footer-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
+            <div class="block">
+              <a href="/"><img style="height:50px" 
+                src="<%= data.globals.logo_dark_mode ? '/assets/'+data.globals.logo_dark_mode : '/web_assets/images/logo-alt.png' %>"
+                 alt="footer-logo"></a>
+              <!-- Social Site Icons -->
+              <ul class="social-icon list-inline">
+
+                <!-- loop data.globals.social_links-->
+                <% data.globals.social_links.forEach(social => { %>
+                  <li class="list-inline-item">
+                    <a href="<%= social.url %>" target="_blank"><i class="ti-<%= social.service %>"></i></a>
+                  </li>
+                <% }) %>
+
+               
+              </ul>
+            </div>
+          </div>
+
+
+          <% 
+          // Get top-level pages (no parent)
+          const topLevelPages = data.navigation_items.footer.filter(item => item.parent === null);
+      
+          // Function to get permalink
+          function getPermalink(item) {
+            return item.page ? item.page.permalink : (item.url || "#");
+          }
+        %>
+      
+        <% topLevelPages.forEach(parent => { %>
+          <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+            <div class="block-2">
+              <!-- Main Category Heading -->
+              <h6><a href="<%= getPermalink(parent) %>"><%= parent.title %></a></h6>
+              <!-- Child Pages -->
+              <% if (parent.children && parent.children.length > 0) { %>
+                <ul>
+                  <% parent.children.forEach(child => { %>
+                    <li><a href="<%= getPermalink(child) %>"><%= child.title %></a></li>
+                  <% }) %>
+                </ul>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+
+
+         
+        </div>
+      </div>
+    </div>
+    <div class="text-center bg-dark py-4">
+      <small class="text-secondary">Copyright &copy; <%= new Date().getFullYear() %> &nbsp;
+        <%- data.globals.copyright_footer_html %>
+        </small class="text-secondary">
+    </div>
+  </footer>

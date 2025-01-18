@@ -1,0 +1,43 @@
+
+<!-- json data output -->
+ <!-- <%=JSON.stringify(data.navigation_items.main)%>  -->
+<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
+    <div class="container">
+    <!--src="/web_assets/images/logo.png"-->
+      <a class="navbar-brand" href="/"><img style="height:50px"    
+        src="<%= data.globals.logo ? '/assets/'+data.globals.logo : '/web_assets/images/logo.png' %>"
+        alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="ti-menu"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav ml-auto">
+          <% data.navigation_items.main.forEach(item => { %>
+            <% if (item.type === 'page' && item.page && item.children.length ==0 ) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= item.page.permalink %>"><%= item.title %></a>
+              </li>
+            <% } else if (item.type === 'group' && item.children.length > 0) { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-<%= item.id %>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= item.title %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown-<%= item.id %>">
+                  <% item.children.forEach(child => { %>
+                    <% if (child.type === 'page' && child.page) { %>
+                      <a class="dropdown-item" href="<%= child.page.permalink %>"><%= child.title %></a>
+                    <% } %>
+                  <% }) %>
+                </div>
+              </li>
+            <% } %>
+          <% }) %>
+
+        <!-- loop data.navigation_items.main --> 
+          
+        </ul>
+      </div>
+    </div>
+  </nav>

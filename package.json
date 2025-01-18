@@ -1,0 +1,12 @@
+{
+  "name": "directcms",
+	"version": "0.0.1",
+  "author": "Amit Kulkarni",
+  "homepage": "https://yohita.com/",
+  "dependencies": {
+    "directus": "^11.3.5",
+    "ejs": "^3.1.10",
+    "express-ejs-layouts": "^2.5.1",
+    "sqlite3": "^5.1.7"
+  }
+}

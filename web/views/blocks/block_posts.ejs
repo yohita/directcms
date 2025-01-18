@@ -1,0 +1,80 @@
+
+<% if (block.item.headline) { %>
+    <%- include('../partials/page_title',{block}) %>
+<% } %>
+ 
+
+<section class="post-grid section pt-0">
+	<div class="container">
+		<div class="row">
+
+            <!-- loop posts -->
+            <% data.posts.forEach(post => { %>
+
+                
+			<div class="col-lg-4 col-md-6">
+				<!-- Post -->
+                    <article class="post-sm">
+                        <!-- Post Image -->
+                        <div class="post-thumb">
+                            <a href="/blog/<%=post.slug%>"><img class="w-100" 
+                                src="<%= post.image ? '/assets/'+post.image : '/web_assets/images/blog_default.jpg' %>" alt="Post-Image"></a>		
+                        </div>
+                        <!-- Post Title -->
+                        <div class="post-title">
+                            <h3><a href="/blog/<%=post.slug%>">
+                                <%= post.title %>
+                            </a></h3>
+                        </div>
+                        <!-- Post Meta -->
+                        <div class="post-meta">
+                            <ul class="list-inline post-tag">
+                                <!-- if post.author -->
+                                 <% if (post.author) { %>
+                                    
+                                <li class="list-inline-item">
+                                    <img src="<%= post.author.avatar ? '/assets/'+post.author.avatar : '/web_assets/images/author_default.jpg' %>" alt="author-thumb">
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#"> <%= post.author.first_name +' '+ (post.author.last_name || '') %>  </a>
+                                </li>
+                                <% } %>
+                             
+
+                                <li class="list-inline-item">
+                                    <!-- <%= post.date %> --> <!-- formatted date -->
+                                    <%= new Date(post.published_at).toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric' }) %>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Post Details -->
+                        <div class="post-details">
+                            <p>
+                                <%= post.description %>
+                            </p>
+                        </div>
+                    </article>
+			</div> 
+			 
+            <% }) %>
+            <!-- end loop posts -->
+		 
+	 	<!-- <div class="col-12"> 
+				<nav class="pagination-nav">
+				  <ul class="pagination">
+				    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Next">
+				        <span aria-hidden="true"><i class="ti-angle-right"></i></span>
+				        <span class="sr-only">Next</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>   -->
+		</div>
+	</div>
+</section>

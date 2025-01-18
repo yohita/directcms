@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head',{data}) %>
+  </head>
+  
+  <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+
+  
+    
+       
+            <%- include('../partials/header',{data}) %>
+            <%- body %>
+
+
+
+ 
+
+              <!-- Loop through data.page.blocks and include the block based on its slug -->
+    <% if (data.page && data.page.blocks) { %>
+        <% data.page.blocks.forEach(block => { %>
+          <% if (block.collection) { %>
+            <!-- json output ddata-->
+         
+            <!-- Dynamically include the partial for each block based on its slug -->
+            <% try { %>
+                <!-- Dynamically include the partial for each block based on its collection -->
+                <%- include(`../blocks/${block.collection}`, { block }) %>
+              <% } catch (error) { %>
+                <!-- If the partial doesn't exist, display the block name -->
+                <div class="block" style="text-align: center;margin:0px auto;padding:15px;border:1px solid gray;margin:15px">
+                  <h2>Block not found: <%= block.collection %></h2> 
+                </div>
+              <% } %>
+
+          <% } else { %>
+            <!-- Default block rendering if no slug is provided -->
+            <div class="block">
+              <h2><%= block.title %></h2>
+              <p><%= block.content %></p>
+            </div>
+          <% } %>
+        <% }); %>
+      <% } %>
+
+
+
+            <%- include('../partials/footer',{data}) %>
+     
+     
+
+
+ <!-- To Top -->
+ <div class="scroll-top-to">
+    <i class="ti-angle-up"></i>
+  </div>
+  
+  <% if (data.globals.google_analytics_id) { %>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= data.globals.google_analytics_id %>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '<%= data.globals.google_analytics_id %>');
+    </script> 
+  <% } %>
+
+  <!-- JAVASCRIPTS -->
+  <script src="/web_assets/plugins/jquery/jquery.min.js"></script>
+  <script src="/web_assets/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="/web_assets/plugins/slick/slick.min.js"></script>
+  <script src="/web_assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+  <script src="/web_assets/plugins/syotimer/jquery.syotimer.min.js"></script>
+  <script src="/web_assets/plugins/aos/aos.js"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
+  <script src="plugins/google-map/gmap.js"></script>
+  
+  <script src="/web_assets/js/script.js"></script>
+
+  </body>
+</html>

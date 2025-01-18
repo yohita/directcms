@@ -1,0 +1,20 @@
+
+<% if (block.item.headline) { %>
+    <%- include('../partials/page_title',{block}) %>
+<% } %>
+
+<section class="privacy section pt-0">
+	<div class="container">
+		<div class="row">
+		 
+			<div class="col-lg-12">
+				<div class="block"> 
+						<div class="policy-details">
+                            <%-block.item.content%>
+						 	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,48 @@
+{
+  "name": "directus-extension-wpslug-interface",
+  "version": "1.1.0",
+  "author": {
+    "email": "dimitrov.adrian+gh@gmail.com",
+    "name": "Adrian Dimitrov"
+  },
+  "license": "gpl-3.0",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-interface",
+    "permalink",
+    "slug",
+    "wordpress permalink"
+  ],
+  "directus:extension": {
+    "type": "interface",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^v9.9.0",
+    "hidden": false
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build --no-minify --watch"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "^9.10.0",
+    "@sindresorhus/slugify": "^2.1.0",
+    "directus-codestyle": "dimitrov-adrian/directus-codestyle",
+    "micromustache": "^8.0.3",
+    "typescript": "^4.6.4"
+  },
+  "prettier": "directus-codestyle/prettier",
+  "stylelint": {
+    "extends": "directus-codestyle/stylelint"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/directus-codestyle/.eslintrc.js",
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  }
+}
