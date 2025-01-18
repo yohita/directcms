@@ -71,7 +71,8 @@ To deploy DirectCMS, you can use services like:
 
 ## Licensing
 This CMS is **open-source** under the **MIT License**. You are free to use, modify, and distribute it as per the MIT license terms. 
-However, it is subject to Directus licensing. Check more at [https://directus.io/pricing/self-hosted](https://directus.io/pricing/self-hosted).
+However, DirectCMS relies on Directus, which has its own licensing. Check more at:
+🔗 https://directus.io/pricing/self-hosted
 
 ## Contributing
 We welcome contributions! To contribute:
