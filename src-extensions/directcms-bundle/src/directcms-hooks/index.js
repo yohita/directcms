@@ -105,7 +105,7 @@ export default ({ init, filter, action,schedule},{services,database,getSchema}) 
 		 
 
 		 let pagesService = new ItemsService('pages',{schema:global.DIRECT_CMS.schema});
-		 let pages = await pagesService.readByQuery({fields:["*","blocks.*","blocks.item.*.*.*"],filter:{_or:[{permalink:slug,permalink:'/'+slug}]}});
+		 let pages = await pagesService.readByQuery({fields:["*","blocks.*","blocks.item.faqs.*","blocks.item.*.*.*"],filter:{_or:[{permalink:slug,permalink:'/'+slug}]}});
 		 const page = pages.length > 0 
         ? pages[0] 
         : { title: 'Page not found', permalink: '404', blocks: [] };

@@ -1,0 +1,48 @@
+<!--=================================
+=            FAQ Section            =
+==================================-->
+<section class="faq section pt-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 m-auto">
+				<div class="block shadow">
+					<!-- Getting Started -->
+					<div class="faq-item">
+						<!-- Title -->
+						<div class="faq-item-title text-center">
+							<h2>
+								 <%= block.item.headline %>
+								 <p> <%= block.item.tagline %> </p> 
+							</h2> 
+						</div>
+						<!-- Get Started Accordion -->
+						<div id="gstAccordion" data-children=".item">
+						  <!-- Accordion Item 01 -->
+
+						  <% block.item.faqs.forEach((faq, index) => { %>
+						  	<div class="item">
+						  		<div class="item-link">
+								    <a data-toggle="collapse" data-parent="#gstAccordion" href="#gstAccordion<%= index %>">
+								      <%= faq.question %>
+								    </a>
+						  		</div>
+							    <div id="gstAccordion<%= index %>" class="collapse accordion-block">
+							      <p>
+							        <%- faq.answer %>
+							      </p>
+							    </div>
+						  	</div>
+							<% }) %>
+						</div>
+
+
+						   
+						</div>
+					</div>
+				 
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of FAQ Section  ====-->
