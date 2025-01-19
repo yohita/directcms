@@ -1,0 +1,68 @@
+<!--====================================
+=            Single Article            =
+=====================================-->
+<section class="section blog-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 m-auto">
+				<!-- Single Post -->
+				<article class="single-post">
+					<!-- Post title -->
+					<div class="post-title text-center">
+						<h1><%=data.post.title%></h1>
+						<!-- Tags -->
+						<ul class="list-inline post-tag">
+							<li class="list-inline-item">
+								<img src="<%= data.post.author.avatar ? '/assets/'+data.post.author.avatar : '/web_assets/images/author_default.jpg' %>" alt="author-thumb">
+							</li>
+							<li class="list-inline-item">
+								<a href="#"> <%= data.post.author.first_name +' '+ (data.post.author.last_name || '') %> </a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">                                    <%= new Date(data.post.published_at).toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                                </a>
+							</li>
+						</ul>
+					</div>
+					<!-- Post body -->
+					<div class="post-body">
+						<!-- Feature Image -->
+						<div class="feature-image">
+							<img class="img-fluid" src="<%= data.post.image ? '/assets/'+data.post.image : '/web_assets/images/blog_default.jpg' %>" alt="feature-image">
+						</div>
+				
+                        <%-  data.post.content %>
+                    </div>
+				</article>
+				<!-- About Author Widget -->
+				<div class="about-author">
+					<h2>About this author</h2>
+					<div class="media">
+						<!-- Author Image -->
+						<div class="image">
+                            <img src="<%= data.post.author.avatar ? '/assets/'+data.post.author.avatar : '/web_assets/images/author_default.jpg' %>" class="d-flex justify-content-center align-self-center"">
+
+							 
+						</div>
+						<!-- About Author -->
+						<div class="media-body align-self-center">
+							<!-- Author Name -->
+							<h3>  <%= data.post.author.first_name +' '+ (data.post.author.last_name || '') %> </h3>
+							<!-- Bio -->
+							<p> <%= data.post.author.description %>
+                                 </p>
+							<!-- Author Social links -->
+							<ul class="list-inline social-links">
+								<li class="list-inline-item"><a href=""><i class="ti-facebook"></i></a></li>
+								<li class="list-inline-item"><a href=""><i class="ti-twitter"></i></a></li>
+								<li class="list-inline-item"><a href=""><i class="ti-instagram"></i></a></li>
+								<li class="list-inline-item"><a href=""><i class="ti-dribbble"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Single Article  ====-->

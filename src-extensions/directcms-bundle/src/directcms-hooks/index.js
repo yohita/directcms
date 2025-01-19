@@ -87,14 +87,17 @@ export default ({ init, filter, action,schedule},{services,database,getSchema}) 
 		 let blog_slug='';
 		 let posts=[];
 		 let post={};
+		 let is_notfound=false;
 		 if(slug=='blog'){
 			// blog_slug=	req.path.split('/')[2];
 			//check if blog slug exists
 			if(req.path.split('/').length>2){
 				blog_slug=req.path.split('/')[2];
-				let tposts = await new ItemsService('posts',{schema:global.DIRECT_CMS.schema}).readByQuery({fields:["*"],filter:{status:'published',slug:blog_slug},sort:["published_at"]});
+				let tposts = await new ItemsService('posts',{schema:global.DIRECT_CMS.schema}).readByQuery({fields:["*","author.*"],filter:{status:'published',slug:blog_slug},sort:["published_at"]});
 				if(tposts.length>0){
 					post=tposts[0];
+				} else{
+					is_notfound=true;
 				}
  			} else{
 				posts = await new ItemsService('posts',{schema:global.DIRECT_CMS.schema}).readByQuery({fields:["*","author.*"],filter:{status:'published'},sort:["published_at"]});
@@ -110,12 +113,16 @@ export default ({ init, filter, action,schedule},{services,database,getSchema}) 
         ? pages[0] 
         : { title: 'Page not found', permalink: '404', blocks: [] };
 
+		if(page.permalink==404){
+			is_notfound=true;
+		}
+
 		 //console.log('pages',pages);
 		 
 			res.render('index', {
 				title: 'Landing',
 				layout: 'layouts/layout.ejs',
-				data:{page:page,posts:posts,post:post,navigation_items:global.DIRECT_CMS.navigation_items,globals:global.DIRECT_CMS.globals}
+				data:{page:page,posts:posts,post:post,navigation_items:global.DIRECT_CMS.navigation_items,globals:global.DIRECT_CMS.globals,is_notfound:is_notfound}
 			});
 	}
 

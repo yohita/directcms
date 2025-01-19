@@ -13,12 +13,18 @@
             <%- include('../partials/header',{data}) %>
             <%- body %>
 
+            <% if(data.post && data.post.id) {%>
+              <%- include('./blog_single',{data}) %>
+            <% } %>  
 
+            <% if(data.is_notfound) {%>
+              <%- include('./404',{data}) %>
+            <% } %>  
 
  
 
               <!-- Loop through data.page.blocks and include the block based on its slug -->
-    <% if (data.page && data.page.blocks) { %>
+    <% if (data.page && data.page.blocks && !data.post.id && !data.is_notfound) { %>
         <% data.page.blocks.forEach(block => { %>
           <% if (block.collection) { %>
             <!-- json output ddata-->
