@@ -6,9 +6,9 @@ Directus-based Website CMS
 DirectCMS is a lightweight, flexible, and scalable Content Management System (CMS) built on **Directus**. It enables seamless content management with an intuitive interface and powerful API-driven backend.
 
 Demo : [directcms.in](http://directcms.in)
-Demo Credentials to check Directus admin - Read only
-Email : demo@demo.com
-Password : demo123 
+- Demo Credentials to check Directus admin  
+- Email : admin@admin.com
+- Password : admin123 
 
 ## Features
 - **Headless CMS**: Use Directus as the backend and connect it with any frontend framework.
